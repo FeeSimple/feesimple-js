@@ -51,10 +51,17 @@ const testMapPropertyToUnit = async () => {
   console.log('mapPropToUnit:', mapPropToUnit);
 }
 
+const testGetAvailabilityData = async () => {
+  const availabilityData = await feesimpleClient.getAvailabilityData('usertrung123');
+  console.log('availabilityData:', JSON.stringify(availabilityData, null, 2));
+}
+
 (async () => {
   // await testError1();
   // await testError2();
-  await testSuccess();  
-  await testMapPropertyToFloorplan();
-  await testMapPropertyToUnit();
+  // await testSuccess();  
+  // await testMapPropertyToFloorplan();
+  // await testMapPropertyToUnit();
+
+  await testGetAvailabilityData();
 })();
