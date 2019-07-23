@@ -16,45 +16,45 @@ const testError2 = async () => {
 }
 
 const testSuccess = async () => {
-  const property = await feesimpleClient.getProperty('usertrung123');
+  const property = await feesimpleClient.getPropertyList('usertrung123');
   console.log('property:', property);
 
-  const propertyImg = await feesimpleClient.getPropertyImg('usertrung123');
+  const propertyImg = await feesimpleClient.getPropertyImgList('usertrung123');
   console.log('propertyImg:', propertyImg);
 
-  const floorplan = await feesimpleClient.getFloorplan('usertrung123');
-  console.log('floorplan:', floorplan);
+  const floorplanList = await feesimpleClient.getFloorplanList('usertrung123');
+  console.log('floorplanList:', floorplanList);
 
-  const floorplanImg = await feesimpleClient.getFloorplanImg('usertrung123');
+  const floorplanImg = await feesimpleClient.getFloorplanImgList('usertrung123');
   console.log('floorplanImg:', floorplanImg);
 
-  const unit = await feesimpleClient.getUnit('usertrung123');
-  console.log('unit:', unit);
+  const unitList = await feesimpleClient.getUnitList('usertrung123');
+  console.log('unitList:', unitList);
 
-  const unitImg = await feesimpleClient.getUnitImg('usertrung123');
+  const unitImg = await feesimpleClient.getUnitImgList('usertrung123');
   console.log('unitImg:', unitImg);
 }
 
 const testMapPropertyToFloorplan = async () => {
-  const floorplan = await feesimpleClient.getFloorplan('usertrung123');
-  console.log('floorplan:', floorplan);
+  const floorplanList = await feesimpleClient.getFloorplanList('usertrung123');
+  console.log('floorplanList:', floorplanList);
 
-  const mapPropToFloorplan = mapPropertyToFloorplanList(floorplan);
+  const mapPropToFloorplan = mapPropertyToFloorplanList(floorplanList);
   console.log('mapPropToFloorplan:', mapPropToFloorplan);
 }
 
 const testMapPropertyToUnit = async () => {
-  const unit = await feesimpleClient.getUnit('usertrung123');
-  console.log('unit:', unit);
+  const unitList = await feesimpleClient.getUnitList('usertrung123');
+  console.log('unitList:', unitList);
 
-  const mapPropToUnit = mapPropertyToUnitList(unit);
+  const mapPropToUnit = mapPropertyToUnitList(unitList);
   console.log('mapPropToUnit:', mapPropToUnit);
 }
 
 (async () => {
   // await testError1();
   // await testError2();
-  // await testSuccess();  
-  // await testMapPropertyToFloorplan();
+  await testSuccess();  
+  await testMapPropertyToFloorplan();
   await testMapPropertyToUnit();
 })();
