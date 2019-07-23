@@ -1,6 +1,6 @@
 const FeeSimple = require('../lib');
 const feesimpleClient = FeeSimple();
-const {mapPropertyToFloorplan} = require('../lib/helper');
+const {mapPropertyToFloorplanList, mapPropertyToUnitList} = require('../lib/helper');
 
 const testError1 = async () => {
   const what = await feesimpleClient.getWhat('usertrung123', 'abc')
@@ -39,13 +39,22 @@ const testMapPropertyToFloorplan = async () => {
   const floorplan = await feesimpleClient.getFloorplan('usertrung123');
   console.log('floorplan:', floorplan);
 
-  const mapPropToFloorplan = mapPropertyToFloorplan(floorplan);
+  const mapPropToFloorplan = mapPropertyToFloorplanList(floorplan);
   console.log('mapPropToFloorplan:', mapPropToFloorplan);
+}
+
+const testMapPropertyToUnit = async () => {
+  const unit = await feesimpleClient.getUnit('usertrung123');
+  console.log('unit:', unit);
+
+  const mapPropToUnit = mapPropertyToUnitList(unit);
+  console.log('mapPropToUnit:', mapPropToUnit);
 }
 
 (async () => {
   // await testError1();
   // await testError2();
   // await testSuccess();  
-  await testMapPropertyToFloorplan();
+  // await testMapPropertyToFloorplan();
+  await testMapPropertyToUnit();
 })();
