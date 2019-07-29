@@ -1,6 +1,9 @@
 const FeeSimple = require('../lib');
 const feesimpleClient = FeeSimple();
-const {mapPropertyToFloorplanList, mapPropertyToUnitList} = require('../lib/helper');
+const {
+  mapPropertyToFloorplanList, mapPropertyToUnitList,
+  mapFloorplanToImgList, mapUnitToImgList
+} = require('../lib/helper');
 
 const testError1 = async () => {
   const what = await feesimpleClient.getWhat('usertrung123', 'abc')
@@ -51,6 +54,22 @@ const testMapPropertyToUnit = async () => {
   console.log('mapPropToUnit:', mapPropToUnit);
 }
 
+const testMapFloorplanToImgList = async () => {
+  const floorplanImgList = await feesimpleClient.getFloorplanImgList('usertrung123');
+  console.log('floorplanImgList:', floorplanImgList);
+
+  const mapFlToImgList = mapFloorplanToImgList(floorplanImgList);
+  console.log('mapFlToImgList:', mapFlToImgList);
+}
+
+const testMapUnitToImgList = async () => {
+  const unitImgList = await feesimpleClient.getUnitImgList('usertrung123');
+  console.log('unitImgList:', unitImgList);
+
+  const unitToImgList = mapUnitToImgList(unitImgList);
+  console.log('unitToImgList:', unitToImgList);
+}
+
 const testGetAvailabilityData = async () => {
   const availabilityData = await feesimpleClient.getAvailabilityData('usertrung123');
   console.log('availabilityData:', JSON.stringify(availabilityData, null, 2));
@@ -63,5 +82,8 @@ const testGetAvailabilityData = async () => {
   // await testMapPropertyToFloorplan();
   // await testMapPropertyToUnit();
 
-  await testGetAvailabilityData();
+  // await testGetAvailabilityData();
+
+  await testMapFloorplanToImgList();
+  await testMapUnitToImgList();
 })();
