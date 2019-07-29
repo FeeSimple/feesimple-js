@@ -82,8 +82,8 @@ const testGetAvailabilityData = async () => {
   // await testMapPropertyToFloorplan();
   // await testMapPropertyToUnit();
 
-  // await testGetAvailabilityData();
+  await testGetAvailabilityData();
 
-  await testMapFloorplanToImgList();
-  await testMapUnitToImgList();
+  // await testMapFloorplanToImgList();
+  // await testMapUnitToImgList();
 })();
