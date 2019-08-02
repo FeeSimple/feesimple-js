@@ -12,6 +12,12 @@ With [npm](http://npmjs.org/):
 $ npm install feesimple-js
 ```
 
+With [yarn](https://yarnpkg.com):
+
+```console
+$ yarn add feesimple-js
+```
+
 ## Usage
 
 ### Initialization at server side
@@ -30,7 +36,20 @@ const feesimpleClient = FeeSimple();
 
 ### Get Availability Data
 
+async/await
+
 ```js
 const accountName = 'usertrung123';
 const availabilityData = await feesimpleClient.getAvailabilityData(accountName);
+console.log('availabilityData:', JSON.stringify(availabilityData, null, 2));
+```
+
+Promise
+
+```js
+const accountName = 'usertrung123';
+feesimpleClient.getAvailabilityData(accountName)
+  .then(availabilityData => {
+    console.log('availabilityData:', JSON.stringify(availabilityData, null, 2));
+  })
 ```
