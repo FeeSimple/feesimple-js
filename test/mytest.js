@@ -71,8 +71,23 @@ const testMapUnitToImgList = async () => {
 }
 
 const testGetAvailabilityData = async () => {
-  const availabilityData = await feesimpleClient.getAvailabilityData('usertrung123');
-  console.log('availabilityData:', JSON.stringify(availabilityData, null, 2));
+  try {
+    const availabilityData = await feesimpleClient.getAvailabilityData('fsmanager111');
+    console.log('availabilityData:', JSON.stringify(availabilityData, null, 2));
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+const testGetAvailabilityDataPromise = () => {
+  feesimpleClient.getAvailabilityData('usertrung123')
+    .then(availabilityData => {
+      console.log('availabilityData:', JSON.stringify(availabilityData, null, 2));
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  
 }
 
 (async () => {
@@ -83,6 +98,8 @@ const testGetAvailabilityData = async () => {
   // await testMapPropertyToUnit();
 
   await testGetAvailabilityData();
+
+  testGetAvailabilityDataPromise();
 
   // await testMapFloorplanToImgList();
   // await testMapUnitToImgList();

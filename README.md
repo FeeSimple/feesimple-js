@@ -39,9 +39,13 @@ const feesimpleClient = FeeSimple();
 async/await
 
 ```js
-const accountName = 'usertrung123';
-const availabilityData = await feesimpleClient.getAvailabilityData(accountName);
-console.log('availabilityData:', JSON.stringify(availabilityData, null, 2));
+try {
+  const accountName = 'usertrung123';
+  const availabilityData = await feesimpleClient.getAvailabilityData(accountName);
+  console.log('availabilityData:', JSON.stringify(availabilityData, null, 2));
+} catch (err) {
+  console.log(err);
+}
 ```
 
 Promise
@@ -51,5 +55,8 @@ const accountName = 'usertrung123';
 feesimpleClient.getAvailabilityData(accountName)
   .then(availabilityData => {
     console.log('availabilityData:', JSON.stringify(availabilityData, null, 2));
+  })
+  .catch(err => {
+    console.log(err);
   })
 ```
